@@ -10,6 +10,9 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture(videoPath)
     # đọc frame đầu tiên của video
     success, frame = cap.read()
+    # n = 99
+    # for i in range(n):
+    #     success, frame = cap.read()
     # kiểm tra xem có thành công không , nếu không thì thoát ra
     if not success:
         print('Failed to read video')
@@ -20,7 +23,7 @@ if __name__ == '__main__':
     ## tải trình phân loại khuôn mặt đã được đào tạo trong opencv
     haar_cascade_face = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
     ## lấy các hình chữ nhật có khuôn mặt được phát hiện , đầu vào của hàm này là một ảnh xám
-    bboxes = haar_cascade_face.detectMultiScale(frame_gray, scaleFactor=1.01, minNeighbors=5 , minSize=(30,30))
+    bboxes = haar_cascade_face.detectMultiScale(frame_gray, scaleFactor=1.08, minNeighbors=5 , minSize=(30,30))
     ## tạo một mảng để chứa màu cho các đối tượng
     colors = []
 
@@ -32,7 +35,7 @@ if __name__ == '__main__':
         # vì đầu vào của hàm dưới là tuple nên phải chuyển ndarray thành tuple
         bbox = (bbox_[0],bbox_[1],bbox_[2],bbox_[3])
         colors.append((randint(64, 255), randint(64, 255), randint(64, 255)))
-        tracker = cv2.TrackerKCF_create()
+        tracker = cv2.TrackerCSRT_create()
         multiTracker.add(tracker, frame, bbox)
 
     # for i, newbox in enumerate(bboxes):
