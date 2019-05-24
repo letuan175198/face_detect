@@ -30,7 +30,7 @@ maxSize = (40, 40)
 
 haar_cascade_face = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
 multiTracker = cv2.MultiTracker_create()
-cap = cv2.VideoCapture("videos/1.mp4")
+cap = cv2.VideoCapture(videoPath)
 colors = []
 
 def read_frame():
