@@ -25,7 +25,7 @@ else: minNeighbors = int(args["minNeighbors"])
 minSize = (30, 30)
 # else: minSize = args["minSize"]
 # if args["maxSize"] is None:
-maxSize = (40, 40)
+maxSize = None
 # else: maxSize = args["maxSize"]
 
 haar_cascade_face = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
